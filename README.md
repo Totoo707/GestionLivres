@@ -15,25 +15,5 @@ Backend: **Firebase** (Authentication, Cloud Firestore, Storage).
 - Coil pour le chargement des images
 - Architecture simple : `ui/`, `data/`, `util/` (niveau étudiant, commenté)
 
-## Configuration rapide
 
-### 1) Firebase
-- Créer un projet Firebase, ajouter une app **Android** avec le package **`com.example.gestionlivres`**.
-- Télécharger **`app/google-services.json`** et le placer dans le dossier `app/`.
-- Activer **Authentication → Email/Password**.
-- **Firestore** : créer la collection `books` avec des documents du type :
-  - `title` (string), `author` (string), `year` (number), `description` (string),  
-    `coverPath` (string ex: `covers/1984.jpg`), `read` (boolean)
-- **Storage** : (optionnel) uploader les images dans `covers/` (`1984.jpg`, `alchemist.jpg`).
-
-### 2) Règles (développement)
-**Firestore rules**
-```rules
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if request.auth != null;
-    }
-  }
-}
+  
